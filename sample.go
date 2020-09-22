@@ -11,11 +11,30 @@ import (
 	"image/png"
 	"os"
 	"strings"
+	"log"
+	"io/ioutil"
 )
 
 // @see https://news.mynavi.jp/article/gogogo-5/
-// @see https://shiro-16.hatenablog.com/entry/2020/05/29/130508
 func main() {
+	// カレントディレクトリのファイル一覧を得る
+	files, err := ioutil.ReadDir(".")
+	if err != nil {
+		log.Fatal(err)
+	}
+	
+	// 取得した一覧を表示
+	for _, file := range files {
+		fmt.Printf("type is %T\n", file)
+
+	// TODO: 下記の関数で処理できる型で引数を渡す必要があるのだけど、ちょっとわからなかった
+		// convert(file)
+	}
+}
+
+
+// @see https://shiro-16.hatenablog.com/entry/2020/05/29/130508
+func convert() {
 	flag.Parse()
 	args := flag.Args()
 
