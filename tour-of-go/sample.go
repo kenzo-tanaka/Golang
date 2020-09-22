@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var (
 	TobBe bool = false
@@ -36,13 +39,21 @@ func forSample() {
 	for i := 0; i < 10; i++ {
 		sum += i
 	}
-    fmt.Printf(sum)
-    
+	fmt.Printf(sum)
 
-    // Goではwhileを使わずforだけを使う
-    sum2 := 1
-    for sum2 < 1000 {
-        sum2 += sum
-    }
-    fmt.Println(sum2)
+	// Goではwhileを使わずforだけを使う
+	sum2 := 1
+	for sum2 < 1000 {
+		sum2 += sum
+	}
+	fmt.Println(sum2)
+}
+
+func pow(x, n, lim float64) float64 {
+
+    // if文は条件の前に評価するための簡単なステートメントをかける
+	if v := math.Pow(x, n); v < lim {
+		return v
+	}
+	return lim
 }
