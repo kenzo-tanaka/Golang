@@ -20,3 +20,5 @@ func main() {
 		fmt.Println(file.Name())
 	}
 }
+
+// @see https://shiro-16.hatenablog.com/entry/2020/05/29/130508
