@@ -51,7 +51,7 @@ func forSample() {
 
 func pow(x, n, lim float64) float64 {
 
-    // if文は条件の前に評価するための簡単なステートメントをかける
+	// if文は条件の前に評価するための簡単なステートメントをかける
 	if v := math.Pow(x, n); v < lim {
 		return v
 	}
