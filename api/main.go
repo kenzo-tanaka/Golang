@@ -38,7 +38,6 @@ func returnAllArticles(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("Endpoint Hit: returnAllArticles")
 	json.NewEncoder(w).Encode(articles)
-
 }
 
 func main() {
