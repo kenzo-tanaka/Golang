@@ -1,3 +1,11 @@
+/*
+
+- ref: https://hodalog.com/creating-restfulapi-with-golang/
+- 記事一覧や詳細などを返すエンドポイントを実装
+- DB接続などはやっていない
+
+*/
+
 package main
 
 import (
@@ -10,6 +18,7 @@ import (
 )
 
 type Article struct {
+	ID      int    `json:"Id"`
 	Title   string `json:"Title"`
 	Desc    string `json:"desc"`
 	Content string `json:"content"`
@@ -28,6 +37,8 @@ func handleRequests() {
 	myRouter := mux.NewRouter().StrictSlash(true)
 	myRouter.HandleFunc("/", homePage)
 	myRouter.HandleFunc("/articles", returnAllArticles)
+	myRouter.HandleFunc("/articles/{id}", returnSingleArticle)
+
 	log.Fatal(http.ListenAndServe(":8081", myRouter))
 }
 
@@ -42,6 +53,12 @@ func returnAllArticles(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("Endpoint Hit: returnAllArticles")
 	json.NewEncoder(w).Encode(articles)
+}
+
+func returnSingleArticle(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	key := vars["id"]
+	fmt.Fprintf(w, "Key: "+key+"\n")
 }
 
 func main() {
