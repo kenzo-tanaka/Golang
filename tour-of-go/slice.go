@@ -22,6 +22,14 @@ func main() {
 	// Extends its length
 	s = s[:4]
 	printSlice(s)
+
+	// make関数で初期化
+	a := make([]int, 5)
+	printSlice(a)
+
+	// append
+	a = append(a, 1)
+	printSlice(a)
 }
 
 func printSlice(s []int) {
